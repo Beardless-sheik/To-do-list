@@ -15,19 +15,28 @@ This project is build with:
 
 ## Getting Started
 
+If you want to run the project locally in your browser you need to install: 
+
+  - Node
+  - Npm (Node Package Manager)
+  - Git
+  - Text Editor
+
 To get the content of this project locally you need to run this command in your terminal:
 
 - ` git clone https://github.com/Beardless-sheik/To-do-list.git`
 
+You need to then install the packages locally to your systeme by running: 
+
+ > npm install 
+
+To start the server in development mode, Run: 
+
+ > npm run dev 
+
 ## Test
 
 For tracking linter errors locally you need to follow these steps:
-
-- After cloning the project you need to run these commands:
-
-  > npm install - This command will download all the dependancies of the project.
-  > npm run start - This starts the development server and opens the project in your browser with live reloading.
-  > npm run build - This builds the souce file using webpack and minifies your code to the dist folder for production.
 
 - For tracking the linter errors in HTML files run:
 

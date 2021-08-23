@@ -10,20 +10,22 @@
   <header>
     <h1> To Do List App </h1>
   </header>
-  <main>  
-    <ul>
-      <li> 
-        <p> Today's To Do </p>
-        <i class="fa-solid fa-arrows-rotate"></i>
-      </li>
-      <li>
-        <input type="text">
-        <i class="fa-solid fa-plus"></i>
-      </li>
-      <li>
-        <ul id="bookList"></ul>
-      </li>
-    </ul>
+  <main>
+    <section>
+      <ul class="app-container">
+        <li class="main-list"> 
+          <p class="center-grid"> Today's To Do </p>
+          <i class="fas fa-sync-alt position-grid-end"></i>
+        </li>
+        <li class="main-list">
+          <input type="text" class="center-grid task-input" placeholder="Add to your list">
+          <i class="fas fa-level-down-alt position-grid-end"></i>
+        </li>
+        <li>
+          <ul id="bookList" class="bookList"></ul>
+        </li>
+      </ul>
+    </section>  
   </main>
   <script src="https://kit.fontawesome.com/bc80da3d28.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>

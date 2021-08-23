@@ -1,10 +1,10 @@
 body {
-  background-color: rgba(238, 230, 230, 0.897)
+  background-color: rgba(238, 230, 230, 0.897);
 }
 
 .app-container {
   background-color: white;
-  box-shadow: 15px 15px 6px 2px #C9C9C9;
+  box-shadow: 15px 15px 6px 2px #c9c9c9;
   margin: 30px;
   padding: 0;
 }
@@ -15,7 +15,7 @@ ul {
 }
 
 .main-list {
-  display:  grid;
+  display: grid;
   grid-template-columns: 7fr 1fr;
   border-bottom: 1px solid rgba(230, 216, 216, 0.678);
   padding: 0;
@@ -59,8 +59,3 @@ ul {
   border: none;
   height: 3rem;
 }
-
-/* input, input:focus {
-  outline: none;
-  border: none;
-} */

@@ -1,3 +1,66 @@
 body {
-  background-color: brown;
+  background-color: rgba(238, 230, 230, 0.897)
 }
+
+.app-container {
+  background-color: white;
+  box-shadow: 15px 15px 6px 2px #C9C9C9;
+  margin: 30px;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.main-list {
+  display:  grid;
+  grid-template-columns: 7fr 1fr;
+  border-bottom: 1px solid rgba(230, 216, 216, 0.678);
+  padding: 0;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 1fr 9fr 1fr;
+  border-bottom: 1px solid rgba(230, 216, 216, 0.678);
+}
+
+.bookList {
+  padding-left: 0;
+}
+
+.clear-button {
+  width: 100%;
+  height: 2.5rem;
+}
+
+.center-grid {
+  justify-self: start;
+  margin-left: 30px;
+  align-self: center;
+}
+
+.position-grid-end {
+  justify-self: end;
+  margin-right: 15px;
+  align-self: center;
+}
+
+.position-grid-start {
+  justify-self: start;
+  margin-left: 15px;
+  align-self: center;
+}
+
+.task-input {
+  width: 100%;
+  border: none;
+  height: 3rem;
+}
+
+/* input, input:focus {
+  outline: none;
+  border: none;
+} */

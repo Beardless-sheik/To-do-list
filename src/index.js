@@ -13,7 +13,6 @@ const getLocalStorageTasks = () => {
   const getData = localStorage.getItem('tasksList');
   if (getData !== undefined) {
     const data = JSON.parse(getData);
-    console.log(data);
     if (data) {
       tasks = data;
     } else {
@@ -31,6 +30,7 @@ const sortTasks = (tasksArray) => {
 };
 
 const populatelist = () => {
+  sortTasks();
   bookList.innerHTML = '';
   if (!tasks) {
     bookList.innerHTML += `
@@ -66,13 +66,11 @@ const populatelist = () => {
     const { target } = event;
     if (target.classList.value.indexOf('delete') !== -1) {
       const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
-      console.log(tasksArray);
       // eslint-disable-next-line max-len
       const index = tasksArray.findIndex((element) => element.index === parseInt(target.id, 10));
       // deleteTask(index, tasksArray);
       // representNewIndexes(tasksArray);
       tasksArray.splice(index, 1);
-      console.log(tasksArray);
       localStorage.setItem('tasksList', JSON.stringify(tasksArray));
       // location.reload();
     }
@@ -102,11 +100,10 @@ input.addEventListener('keypress', (e) => {
         index: 0,
       };
     }
-    console.log(newTask);
     tasks = addNewTask(newTask, tasks);
-    console.log(tasks);
     pushLocalStorageTasks(tasks);
     populatelist();
+    // eslint-disable-next-line no-restricted-globals
     location.reload();
   }
 });
@@ -115,15 +112,12 @@ bookList.addEventListener('click', (event) => {
   const { target } = event;
   if (target.classList.value.indexOf('delete') !== -1) {
     const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
-    console.log(tasksArray);
     // eslint-disable-next-line max-len
     const index = tasksArray.findIndex((element) => element.index === parseInt(target.id, 10));
     const filteredArray = deleteTask(index, tasksArray);
     representNewIndexes(filteredArray);
-    console.log(filteredArray);
     localStorage.setItem('tasksList', JSON.stringify(filteredArray));
     getLocalStorageTasks();
     populatelist();
-    // location.reload();
   }
 });

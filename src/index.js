@@ -25,12 +25,7 @@ const pushLocalStorageTasks = (tasks) => {
   localStorage.setItem('tasksList', JSON.stringify(tasks));
 };
 
-const sortTasks = (tasksArray) => {
-  tasksArray.sort((taskA, taskB) => taskA.index - taskB.index);
-};
-
 const populatelist = () => {
-  sortTasks();
   bookList.innerHTML = '';
   if (!tasks) {
     bookList.innerHTML += `
@@ -62,19 +57,6 @@ const populatelist = () => {
     });
   }
   bookList.innerHTML += '<button id="clear-button" class="clear-button"> Clear All Completed </button>';
-  document.querySelector('.delete-button').addEventListener('click', (event) => {
-    const { target } = event;
-    if (target.classList.value.indexOf('delete') !== -1) {
-      const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
-      // eslint-disable-next-line max-len
-      const index = tasksArray.findIndex((element) => element.index === parseInt(target.id, 10));
-      // deleteTask(index, tasksArray);
-      // representNewIndexes(tasksArray);
-      tasksArray.splice(index, 1);
-      localStorage.setItem('tasksList', JSON.stringify(tasksArray));
-      // location.reload();
-    }
-  });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,8 +85,7 @@ input.addEventListener('keypress', (e) => {
     tasks = addNewTask(newTask, tasks);
     pushLocalStorageTasks(tasks);
     populatelist();
-    // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    window.location.reload();
   }
 });
 
@@ -112,8 +93,7 @@ bookList.addEventListener('click', (event) => {
   const { target } = event;
   if (target.classList.value.indexOf('delete') !== -1) {
     const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
-    // eslint-disable-next-line max-len
-    const index = tasksArray.findIndex((element) => element.index === parseInt(target.id, 10));
+    const index = tasksArray.findIndex((e) => e.index === parseInt(target.id, 10));
     const filteredArray = deleteTask(index, tasksArray);
     representNewIndexes(filteredArray);
     localStorage.setItem('tasksList', JSON.stringify(filteredArray));

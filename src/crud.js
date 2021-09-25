@@ -4,8 +4,7 @@ function editTaskEventListener(parentCheckBoxContainer) {
     if (target.classList.value.indexOf('editable') !== -1) {
       const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
       const inputWithId = target.previousElementSibling;
-      // eslint-disable-next-line max-len
-      const index = tasksArray.findIndex((element) => element.index === parseInt(inputWithId.id, 10));
+      const index = tasksArray.findIndex((e) => e.index === parseInt(inputWithId.id, 10));
       tasksArray[index].description = target.innerHTML;
       localStorage.setItem('tasksList', JSON.stringify(tasksArray));
     }
@@ -13,8 +12,7 @@ function editTaskEventListener(parentCheckBoxContainer) {
 }
 
 const representNewIndexes = (tasksArray) => {
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < tasksArray.length; i++) {
+  for (let i = 0; i < tasksArray.length; i += 1) {
     tasksArray[i].index = i;
   }
 };
@@ -42,8 +40,7 @@ const clearAllCompletedTasks = (completedButtonElement) => {
       const filteredArray = tasksArray.filter((element) => element.completed === false);
       representNewIndexes(filteredArray);
       localStorage.setItem('tasksList', JSON.stringify(filteredArray));
-      // eslint-disable-next-line no-restricted-globals
-      location.reload();
+      window.location.reload();
     }
   });
 };

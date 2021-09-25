@@ -18,9 +18,10 @@ function editTaskEventListener(parentCheckBoxContainer) {
 }
 
 const representNewIndexes = (tasksArray) => {
-  tasksArray.forEach((element, index) => {
-    element.index = index;
-  });
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < tasksArray.length; i++) {
+    tasksArray[i].index = i;
+  }
 };
 
 const addNewTask = (newTask, incomingTasks) => {
@@ -36,7 +37,7 @@ const addNewTask = (newTask, incomingTasks) => {
 
 const deleteTask = (index, tasksArray) => {
   const filteredArray = tasksArray.filter((element) => element.index !== index);
-  representNewIndexes(filteredArray);
+  // representNewIndexes(filteredArray);
   console.log(filteredArray);
   return filteredArray;
 };
@@ -56,5 +57,5 @@ const clearAllCompletedTasks = (completedButtonElement) => {
 };
 
 export {
-  editTaskEventListener, addNewTask, deleteTask, clearAllCompletedTasks,
+  editTaskEventListener, addNewTask, deleteTask, clearAllCompletedTasks, representNewIndexes,
 };

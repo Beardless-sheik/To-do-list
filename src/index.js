@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
   checkBoxEventListener(bookList);
   editTaskEventListener(bookList);
   clearAllCompletedTasks(bookList);
+  populatelist();
 });
-document.addEventListener('DOMContentLoaded', populatelist);
 input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     let newTask;

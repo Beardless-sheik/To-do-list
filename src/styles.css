@@ -23,7 +23,7 @@ ul {
 
 .list-item {
   display: grid;
-  grid-template-columns: 1fr 9fr 1fr;
+  grid-template-columns: 1fr 30fr 1fr 1fr;
   border-bottom: 1px solid rgba(230, 216, 216, 0.678);
 }
 

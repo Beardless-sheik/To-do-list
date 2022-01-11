@@ -1,33 +1,9 @@
 import './styles.css';
+import {addNewTask, deletingTask} from './crud';
 
+let toDoTasks = [];
 const bookList = document.querySelector('#bookList');
-const toDoTasks = [
-  {
-    description: 'This is Task number 1',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'This is Task number 2',
-    completed: true,
-    index: 4,
-  },
-  {
-    description: 'This is Task number 3',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'This is Task number 4',
-    completed: false,
-    index: 5,
-  },
-  {
-    description: 'This is Task number 5',
-    completed: true,
-    index: 1,
-  },
-];
+const taskInputElement = document.querySelector('#task-input');
 
 const sortTasks = (toDoTasks) => {
   const sortedArray = [...toDoTasks];
@@ -36,6 +12,7 @@ const sortTasks = (toDoTasks) => {
 };
 
 const renderTasks = (toDoTasks) => {
+  bookList.innerHTML = '';
   const sortedTasks = sortTasks(toDoTasks);
   if (!sortedTasks) {
     bookList.innerHTML += `
@@ -69,4 +46,38 @@ const renderTasks = (toDoTasks) => {
   bookList.innerHTML += '<button id="clear-button" class="clear-button"> Clear All Completed </button>';
 };
 
-renderTasks(toDoTasks);
+const saveToLocalStorage = (tasksArray) => {
+  localStorage.setItem('toDoListTasks', JSON.stringify(tasksArray));
+};
+
+const retrieveFromLocalStorage = () => {
+  let newStorageTasks = []; 
+  const data = localStorage.getItem('toDoListTasks');
+  if (data) {
+    newStorageTasks = JSON.parse(data);
+  }
+  return newStorageTasks;
+};
+
+taskInputElement.addEventListener('keydown', (event) => {
+  if (event.code === 'Enter') {
+    const newTask = {
+      description: event.target.value,
+      completed: false,
+      index: (toDoTasks.length + 1),
+    };
+    const newTaskArrayWithAddedTask = addNewTask(toDoTasks, newTask);
+    toDoTasks = [...newTaskArrayWithAddedTask];
+    saveToLocalStorage(toDoTasks);
+    renderTasks(toDoTasks);
+  }
+});
+
+bookList.addEventListener('click', (event) => {
+  console.log(event.className);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  toDoTasks = retrieveFromLocalStorage();
+  renderTasks(toDoTasks);
+});

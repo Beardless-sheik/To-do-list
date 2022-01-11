@@ -1,5 +1,5 @@
 import './styles.css';
-import {addNewTask, deletingTask} from './crud';
+import {addNewTask, deletingTask, editingTask} from './crud';
 
 let toDoTasks = [];
 const bookList = document.querySelector('#bookList');
@@ -35,7 +35,7 @@ const renderTasks = (toDoTasks) => {
         bookList.innerHTML += `
     <li class="list-item" draggable="true">
     <input type="checkbox" class="position-grid-start" id="${tasks.index}"/>
-      <p contenteditable="true" class="editable"> ${tasks.description} </p>
+      <p contenteditable="true" class="editable" id="${tasks.index}"> ${tasks.description} </p>
       <i class="fas fa-ellipsis-v position-grid-end"></i>
       <i id="${tasks.index}" class="fas fa-trash-alt position-grid-end delete-button"></i>
     <li>   
@@ -70,6 +70,16 @@ taskInputElement.addEventListener('keydown', (event) => {
     toDoTasks = [...newTaskArrayWithAddedTask];
     saveToLocalStorage(toDoTasks);
     renderTasks(toDoTasks);
+  }
+});
+
+bookList.addEventListener('input', (event) => {
+  if (event.target.className.includes('editable')) {
+    console.log(event.target.id);
+    const newTaskArrayWithAddedTask = editingTask(
+      toDoTasks, parseInt(event.target.id, 10), event.target.innerHTML);
+    toDoTasks = [...newTaskArrayWithAddedTask];
+    saveToLocalStorage(toDoTasks);
   }
 });
 

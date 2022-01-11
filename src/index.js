@@ -1,40 +1,48 @@
 import './styles.css';
-import { checkBoxEventListener } from './status.js';
-import {
-  editTaskEventListener, addNewTask, deleteTask, clearAllCompletedTasks, representNewIndexes,
-} from './crud.js';
 
-let tasks = [];
-
-const bookList = document.getElementById('bookList');
-const input = document.getElementById('task-input');
-
-const getLocalStorageTasks = () => {
-  const getData = localStorage.getItem('tasksList');
-  if (getData !== undefined) {
-    const data = JSON.parse(getData);
-    if (data) {
-      tasks = data;
-    } else {
-      tasks = [];
-    }
+const bookList = document.querySelector('#bookList')
+const toDoTasks = [
+  { description : 'This is Task number 1',
+    completed: false,
+    index: 3
+  },
+  { description : 'This is Task number 2',
+    completed: true,
+    index: 4
+  },
+  { description : 'This is Task number 3',
+    completed: false,
+    index: 2
+  },
+  { description : 'This is Task number 4',
+    completed: false,
+    index: 5
+  },
+  { description : 'This is Task number 5',
+    completed: true,
+    index: 1
   }
+];
+
+const sortTasks = (toDoTasks) => {
+  const sortedArray = [...toDoTasks];
+  sortedArray.sort((a,b) => {
+    return a.index - b.index
+  });
+  console.log(sortedArray);
+  return sortedArray;
 };
 
-const pushLocalStorageTasks = (tasks) => {
-  localStorage.setItem('tasksList', JSON.stringify(tasks));
-};
-
-const populatelist = () => {
-  bookList.innerHTML = '';
-  if (!tasks) {
+const renderTasks = (toDoTasks) => {
+  const sortedTasks = sortTasks(toDoTasks);
+  if (!sortedTasks) {
     bookList.innerHTML += `
     <li class="list-item" draggable="true">
       <p > No Tasks </p>
     <li>   
     `;
   } else {
-    tasks.forEach((tasks) => {
+    sortedTasks.forEach((tasks) => {
       if (tasks.completed === true) {
         bookList.innerHTML += `
     <li class="list-item" draggable="true">
@@ -57,47 +65,6 @@ const populatelist = () => {
     });
   }
   bookList.innerHTML += '<button id="clear-button" class="clear-button"> Clear All Completed </button>';
-};
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  getLocalStorageTasks();
-  checkBoxEventListener(bookList);
-  editTaskEventListener(bookList);
-  clearAllCompletedTasks(bookList);
-  populatelist();
-});
-input.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    let newTask;
-    if (tasks) {
-      newTask = {
-        description: input.value,
-        completed: false,
-        index: tasks.length + 1,
-      };
-    } else {
-      newTask = {
-        description: input.value,
-        completed: false,
-        index: 0,
-      };
-    }
-    tasks = addNewTask(newTask, tasks);
-    pushLocalStorageTasks(tasks);
-    populatelist();
-    window.location.reload();
-  }
-});
-
-bookList.addEventListener('click', (event) => {
-  const { target } = event;
-  if (target.classList.value.indexOf('delete') !== -1) {
-    const tasksArray = JSON.parse(localStorage.getItem('tasksList'));
-    const index = tasksArray.findIndex((e) => e.index === parseInt(target.id, 10));
-    const filteredArray = deleteTask(index, tasksArray);
-    representNewIndexes(filteredArray);
-    localStorage.setItem('tasksList', JSON.stringify(filteredArray));
-    getLocalStorageTasks();
-    populatelist();
-  }
-});
+renderTasks(toDoTasks);

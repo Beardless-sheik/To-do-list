@@ -14,4 +14,16 @@ const deletingTask = (tasksArray, deletedTaskIndex) => {
   return newTaskArray;
 };
 
-export { addNewTask, deletingTask };
+const editingTask = (tasksArray, editTaskIndex, editedTaskDescription) => {
+  const newTaskArray = tasksArray.map((task) => {
+    console.log(task, task.index, editTaskIndex)
+    if (task.index === editTaskIndex) {
+      task.description = editedTaskDescription;
+    }
+    return task;
+  });
+  console.log(newTaskArray);
+  return newTaskArray;
+};
+
+export { addNewTask, deletingTask, editingTask };

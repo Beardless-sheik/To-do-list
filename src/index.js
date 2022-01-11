@@ -51,7 +51,7 @@ const saveToLocalStorage = (tasksArray) => {
 };
 
 const retrieveFromLocalStorage = () => {
-  let newStorageTasks = []; 
+  let newStorageTasks = [];
   const data = localStorage.getItem('toDoListTasks');
   if (data) {
     newStorageTasks = JSON.parse(data);
@@ -74,7 +74,12 @@ taskInputElement.addEventListener('keydown', (event) => {
 });
 
 bookList.addEventListener('click', (event) => {
-  console.log(event.className);
+  if (event.target.className.includes('delete-button')) {
+    const newTaskArrayWithDeletedTask = deletingTask(toDoTasks, parseInt(event.target.id, 10));
+    toDoTasks = [...newTaskArrayWithDeletedTask];
+    saveToLocalStorage(toDoTasks);
+    renderTasks(toDoTasks);
+  }
 });
 
 window.addEventListener('DOMContentLoaded', () => {

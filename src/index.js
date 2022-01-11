@@ -1,35 +1,37 @@
 import './styles.css';
 
-const bookList = document.querySelector('#bookList')
+const bookList = document.querySelector('#bookList');
 const toDoTasks = [
-  { description : 'This is Task number 1',
+  {
+    description: 'This is Task number 1',
     completed: false,
-    index: 3
+    index: 3,
   },
-  { description : 'This is Task number 2',
+  {
+    description: 'This is Task number 2',
     completed: true,
-    index: 4
+    index: 4,
   },
-  { description : 'This is Task number 3',
+  {
+    description: 'This is Task number 3',
     completed: false,
-    index: 2
+    index: 2,
   },
-  { description : 'This is Task number 4',
+  {
+    description: 'This is Task number 4',
     completed: false,
-    index: 5
+    index: 5,
   },
-  { description : 'This is Task number 5',
+  {
+    description: 'This is Task number 5',
     completed: true,
-    index: 1
-  }
+    index: 1,
+  },
 ];
 
 const sortTasks = (toDoTasks) => {
   const sortedArray = [...toDoTasks];
-  sortedArray.sort((a,b) => {
-    return a.index - b.index
-  });
-  console.log(sortedArray);
+  sortedArray.sort((a, b) => a.index - b.index);
   return sortedArray;
 };
 
@@ -65,6 +67,6 @@ const renderTasks = (toDoTasks) => {
     });
   }
   bookList.innerHTML += '<button id="clear-button" class="clear-button"> Clear All Completed </button>';
-}
+};
 
 renderTasks(toDoTasks);

@@ -1,5 +1,6 @@
 import './styles.css';
 import { addNewTask, deletingTask, editingTask } from './crud.js';
+import { checkBoxEventChange } from './taskStatus.js';
 
 let toDoTasks = [];
 const bookList = document.querySelector('#bookList');
@@ -88,6 +89,12 @@ bookList.addEventListener('click', (event) => {
     saveToLocalStorage(toDoTasks);
     renderTasks(toDoTasks);
   }
+});
+
+bookList.addEventListener('change', (event) => {
+  const newTempArray = checkBoxEventChange(toDoTasks, parseInt(event.target.id, 10));
+  toDoTasks = [...newTempArray];
+  saveToLocalStorage(toDoTasks);
 });
 
 window.addEventListener('DOMContentLoaded', () => {

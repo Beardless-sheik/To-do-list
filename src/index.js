@@ -1,6 +1,6 @@
 import './styles.css';
 import { addNewTask, deletingTask, editingTask } from './crud.js';
-import { checkBoxEventChange } from './taskStatus.js';
+import { checkBoxEventChange, clearAllCompletedTasks } from './taskStatus.js';
 
 let toDoTasks = [];
 const bookList = document.querySelector('#bookList');
@@ -86,6 +86,13 @@ bookList.addEventListener('click', (event) => {
   if (event.target.className.includes('delete-button')) {
     const newTaskArrayWithDeletedTask = deletingTask(toDoTasks, parseInt(event.target.id, 10));
     toDoTasks = [...newTaskArrayWithDeletedTask];
+    saveToLocalStorage(toDoTasks);
+    renderTasks(toDoTasks);
+  }
+
+  if (event.target.className.includes('clear-button')) {
+    const newTasksCleared = clearAllCompletedTasks(toDoTasks);
+    toDoTasks = [...newTasksCleared];
     saveToLocalStorage(toDoTasks);
     renderTasks(toDoTasks);
   }

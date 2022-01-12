@@ -11,7 +11,6 @@ const clearAllCompletedTasks = (tasksArray) => {
     const tempIndex = Number(index + 1);
     task.index = tempIndex;
   });
-  console.log(filteredArray);
   return filteredArray;
 };
 

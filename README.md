@@ -44,7 +44,7 @@ For tracking linter errors locally you need to follow these steps:
 
 - And for tracking the linter errors in CSS files run:
 
-  > npx stylelint "\*_/_.{css,scss}"
+  > npx stylelint "**/*.css"
 
 - And for tracking the linter errors in JS files run:
 

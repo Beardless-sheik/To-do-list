@@ -25,7 +25,7 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack server --mode=development",
+    "dev": "webpack serve --mode=development",
     "start": "webpack serve --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

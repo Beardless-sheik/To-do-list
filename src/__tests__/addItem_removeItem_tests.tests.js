@@ -1,6 +1,6 @@
-import {addNewTask, deletingTask} from '../crud.js';
+import { addNewTask, deletingTask } from '../crud.js';
 
-describe('tests to run for add function', ()=> {
+describe('tests to run for add function', () => {
   const taskArray = [];
 
   test('check length of task array after adding a new task', () => {
@@ -25,7 +25,7 @@ describe('tests to run for delete function', () => {
     description: 'test description 1',
     completed: false,
     index: 1,
-  },{
+  }, {
     description: 'test description 2',
     completed: false,
     index: 2,
@@ -37,5 +37,5 @@ describe('tests to run for delete function', () => {
 
   test('check if length of array after removing last task will be zero', () => {
     expect(deletingTask(taskArray, 1).length).toBe(0);
-  })
-})
+  });
+});

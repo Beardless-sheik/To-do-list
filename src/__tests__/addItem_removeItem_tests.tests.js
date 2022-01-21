@@ -46,24 +46,3 @@ describe('tests to run for delete function', () => {
     expect(deletingTask(taskArray, 1).length).toBe(0);
   });
 });
-
-describe('tests for task editing', () => {
-  const taskArray = [
-    {
-      description: 'test description 1',
-      completed: false,
-      index: 1,
-    },
-    {
-      description: 'test description 2',
-      completed: false,
-      index: 2,
-    },
-  ];
-
-  test('check if task is editable', () => {
-    const editTaskDescription = 'New description 2';
-    const task = editingTask(taskArray, 2, editTaskDescription);
-    expect(task[1].description).toMatch('New description 2');
-  });
-});

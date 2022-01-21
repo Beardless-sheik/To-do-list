@@ -1,4 +1,4 @@
-import { addNewTask, deletingTask, editingTask } from '../crud.js';
+import { addNewTask, deletingTask } from '../crud.js';
 
 describe('tests to run for add function', () => {
   const taskArray = [];
@@ -9,7 +9,7 @@ describe('tests to run for add function', () => {
         description: 'test description 1',
         completed: false,
         index: 1,
-      }).length
+      }).length,
     ).toBe(1);
   });
 
@@ -19,7 +19,7 @@ describe('tests to run for add function', () => {
         description: 'test description 1',
         completed: false,
         index: 1,
-      })[0].description
+      })[0].description,
     ).toBe('string');
   });
 });

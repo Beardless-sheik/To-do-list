@@ -62,7 +62,7 @@ describe('tests for "clear all completed task" function', () => {
   ];
 
   test('check if after removing all true tasks that the returned arry will only have one element left', () => {
-    const filteredArray = clearAllCompletedTasks(taskArray); 
+    const filteredArray = clearAllCompletedTasks(taskArray);
     expect(filteredArray.length).toBe(1);
-  })
+  });
 });

@@ -17,7 +17,7 @@ const renderTasks = (toDoTasks, parentRenderElement) => {
     sortedTasks.forEach((tasks) => {
       if (tasks.completed === true) {
         parentRenderElement.innerHTML += `
-    <li class="list-item" draggable="true">
+    <li class="list-item" draggable="true" id="${tasks.index * 10}">
       <input type="checkbox" class="position-grid-start" id="${tasks.index}" checked/>
       <p contenteditable="true" class="editable"> ${tasks.description} </p>
       <i id="${tasks.index}" class="fas fa-trash-alt position-grid-end delete-button"></i>
@@ -25,7 +25,7 @@ const renderTasks = (toDoTasks, parentRenderElement) => {
     `;
       } else {
         parentRenderElement.innerHTML += `
-    <li class="list-item" draggable="true">
+    <li class="list-item" draggable="true" id="${tasks.index * 10}">
     <input type="checkbox" class="position-grid-start" id="${tasks.index}"/>
       <p contenteditable="true" class="editable" id="${tasks.index}"> ${tasks.description} </p>
       <i id="${tasks.index}" class="fas fa-trash-alt position-grid-end delete-button"></i>
@@ -37,4 +37,4 @@ const renderTasks = (toDoTasks, parentRenderElement) => {
   parentRenderElement.innerHTML += '<button id="clear-button" class="clear-button"> Clear All Completed </button>';
 };
 
-export { sortTasks, renderTasks };
+export default renderTasks;

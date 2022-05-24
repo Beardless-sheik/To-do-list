@@ -22,4 +22,21 @@ const editingTask = (tasksArray, editTaskIndex, editedTaskDescription) => {
   return newTaskArray;
 };
 
-export { addNewTask, deletingTask, editingTask };
+const changeListOrder = (tasksArray, initialTaskIndex, movingTaskIndex) => {
+  const newTaskArray = [...tasksArray];
+  console.log(newTaskArray);
+  const initialArrayIndex = newTaskArray.findIndex((element) => element.index === initialTaskIndex);
+  const movingArrayIndex = newTaskArray.findIndex((element) => element.index === movingTaskIndex);
+  const tempTask = newTaskArray[initialArrayIndex];
+  tempTask.index = movingTaskIndex;
+  const tempTaskTwo = newTaskArray[movingArrayIndex];
+  tempTaskTwo.index = initialTaskIndex;
+  newTaskArray[initialArrayIndex] = tempTaskTwo;
+  newTaskArray[movingArrayIndex] = tempTask;
+  console.log(newTaskArray)
+  return newTaskArray;
+};
+
+export {
+  addNewTask, deletingTask, editingTask, changeListOrder,
+};

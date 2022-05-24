@@ -1,8 +1,8 @@
 import './styles.css';
 import { saveToLocalStorage, retrieveFromLocalStorage } from './modules/localStorage.js';
-import { addNewTask, deletingTask, editingTask } from './modules/crud.js';
+import { addNewTask, deletingTask, editingTask, changeListOrder } from './modules/crud.js';
 import { checkBoxEventChange, clearAllCompletedTasks } from './modules/taskStatus.js';
-import { sortTasks, renderTasks } from './modules/display.js';
+import renderTasks from './modules/display.js';
 // import AppEventListeners from './modules/eventListeners.js'
 
 let toDoTasks = [];
@@ -55,6 +55,27 @@ const AppEventListeners = (taskInputElement, parentTaskListElement) => {
     toDoTasks = [...newTempArray];
     saveToLocalStorage(toDoTasks);
   });
+
+  //implement drag and drop event handlers
+  const dragstartHandler = (event) => {
+    // Add the target element's id to the data transfer object
+
+    event.dataTransfer.setData('text/plain', event.target.id);
+    console.log(event.dataTransfer.getData('text/plain'))
+  };
+
+  const dropHandler = (event) => {
+    event.preventDefault();
+    const initialIndex = event.dataTransfer.getData('text/plain')
+    console.log(Number(initialIndex)/10)
+    console.log(Number(event.target.id))
+    toDoTasks = changeListOrder(toDoTasks, Number(initialIndex) / 10, Number(event.target.id))
+    saveToLocalStorage(toDoTasks);
+    renderTasks(toDoTasks, bookList);
+   };
+
+  parentTaskListElement.addEventListener('dragstart', dragstartHandler);
+  parentTaskListElement.addEventListener('drop', dropHandler);
 };
 
 window.addEventListener('DOMContentLoaded', () => {

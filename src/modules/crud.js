@@ -24,7 +24,6 @@ const editingTask = (tasksArray, editTaskIndex, editedTaskDescription) => {
 
 const changeListOrder = (tasksArray, initialTaskIndex, movingTaskIndex) => {
   const newTaskArray = [...tasksArray];
-  console.log(newTaskArray);
   const initialArrayIndex = newTaskArray.findIndex((element) => element.index === initialTaskIndex);
   const movingArrayIndex = newTaskArray.findIndex((element) => element.index === movingTaskIndex);
   const tempTask = newTaskArray[initialArrayIndex];
@@ -33,7 +32,6 @@ const changeListOrder = (tasksArray, initialTaskIndex, movingTaskIndex) => {
   tempTaskTwo.index = initialTaskIndex;
   newTaskArray[initialArrayIndex] = tempTaskTwo;
   newTaskArray[movingArrayIndex] = tempTask;
-  console.log(newTaskArray)
   return newTaskArray;
 };
 

@@ -32,7 +32,8 @@
     "build": "webpack --mode production",
     "dev": "webpack serve --mode=development",
     "start": "webpack serve --mode=production",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",

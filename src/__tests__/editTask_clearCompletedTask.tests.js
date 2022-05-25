@@ -1,5 +1,5 @@
-import { editingTask } from '../crud.js';
-import { checkBoxEventChange, clearAllCompletedTasks } from '../taskStatus.js';
+import { editingTask } from '../modules/crud.js';
+import { checkBoxEventChange, clearAllCompletedTasks } from '../modules/taskStatus.js';
 
 describe('tests for task editing', () => {
   const taskArray = [

@@ -1,4 +1,4 @@
-import { addNewTask, deletingTask } from '../crud.js';
+import { addNewTask, deletingTask } from '../modules/crud.js';
 
 describe('tests to run for add function', () => {
   const taskArray = [];

@@ -3,7 +3,17 @@
 ## Description
 
 > A To Do List project that lets you add "To do" items, remove them and sort them accordingly. It is live on 
-  [this link](https://beardless-sheik.github.io/To-do-list/). 
+  [this link](https://beardless-sheik.github.io/To-do-list/).
+
+
+## Screenshots
+  - Desktop
+    ![](./src/screenshots/desktop%20screenshot%20To%20Do%20List.png)
+
+
+  - Mobile
+
+    ![](./src//screenshots/mobile%20screenshot%20To%20Do%20List.png)
 
 
 ## Built With

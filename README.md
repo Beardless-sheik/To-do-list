@@ -2,7 +2,7 @@
 
 ## Description
 
-> A To Do List project that lets you add "To do" items, remove them and sort them accordingly. It is live on 
+> A To Do List project that lets you add "To do" items, remove them and sort them accordingly. A user is able to mark a user task as completed. A "Clear All Completed" button is implemented for the user to be able to clear all completed tasks. A user is able to sort the tasks out in whichever order using drag actions (Feature was implemented using the native JavaScript Drag and Drop API). It is live on 
   [this link](https://beardless-sheik.github.io/To-do-list/).
 
 
